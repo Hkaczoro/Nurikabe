@@ -28,7 +28,6 @@ public class Gui extends JFrame implements ActionListener {
 
         wczytaj = new JButton("Wczytaj");
         wczytaj.setBounds(20, 80, 120, 40);
-        wczytaj.setBackground(Color.BLACK);
         //wczytaj.setBorderPainted(false);
         //wczytaj.setOpaque(true);
         add(wczytaj);
@@ -83,6 +82,38 @@ public class Gui extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
+        Object source = actionEvent.getSource();
+        if (source == nowaGra) {
+            //JPanel ramka = new JPanel();
+            MojPanelGraf panel = new MojPanelGraf();
+            setContentPane(panel);
+            panel.setBounds(150,150,349,349);
+
+
+            repaint();
+
+            //setBounds(100,100,250,250);
+            //setVisible(true);
+        }
+    }
+
+    class MojPanelGraf extends JPanel {
+
+
+        public void paintComponent(Graphics g) {
+            int ky = 0;
+            g.setColor(Color.BLACK);
+            g.fillRect(0,0,199,199);
+            g.setColor(Color.white);
+            for(int i = 0; i<7;i++){
+                int kx = 0;
+                for(int j = 0; j<7;j++){
+                    g.fillRect(3 + kx ,3 + ky,25,25);
+                    kx += 28;
+                }
+                ky += 28;
+            }
+        }
 
     }
 }
