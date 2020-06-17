@@ -18,7 +18,7 @@ public class Gui extends JFrame implements ActionListener {
     public Gui(){
         super("Nurikabe");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(760, 620);
+        setSize(800, 700);
         setResizable(false);
         setLocation(50, 50);
 
@@ -82,7 +82,7 @@ public class Gui extends JFrame implements ActionListener {
        // add(plansza);
         MojPanelGraf panel = new MojPanelGraf();
         //setContentPane(panel);
-        panel.setBounds(150, 5,602,590);
+        panel.setBounds(150, 5,620,620);
         add(panel);
 
 
@@ -123,7 +123,7 @@ public class Gui extends JFrame implements ActionListener {
                 int[][] uklad = gra.getUkladPlanszy();
                 a = 5;
                 g.setColor(Color.BLACK);
-                g.fillRect(0,0,600,600);
+                g.fillRect(0,0,602,602);
                 g.setColor(Color.white);
                 for(int i = 0; i<a; i++){
                     int kx = 0;
