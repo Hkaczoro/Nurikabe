@@ -39,6 +39,7 @@ public class Gra {
     }
 
     public void losujUklad(int poziomTrudnosci){
+        this.poziomTrudnosci = poziomTrudnosci;
         Random random = new Random();
         int numer = random.nextInt(2);
         if (poziomTrudnosci == 1){
