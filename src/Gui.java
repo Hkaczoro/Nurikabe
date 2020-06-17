@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Gui extends JFrame implements ActionListener, MouseListener, MouseMotionListener {
@@ -152,8 +153,40 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
             poprawnosc.solwer(uklad, poziomTr);
             repaint();
         }
+        if(source == zapisz){
+            OdczytIZapis z = new OdczytIZapis();
+            String nazwa = zapiszText.getText() + ".csv";
+            z.setNazwaZapisywanego(nazwa);
+            z.write(uklad, gra.getPoziomTrudnosci(), gra.getNrPlanszy());
+        }
+        if(source == wczytaj){
+            OdczytIZapis o = new OdczytIZapis();
+            String nazwa = wczytajText.getText();
+            try {
+                o.czytaj(nazwa);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            gra.setPoziomTrudnosci(o.getPoziomTrudnosci());
+            gra.setNrPlanszy(o.getNumerPlanszy());
+            if(o.getPoziomTrudnosci() == 1){
+                latwy.setSelected(true);
+            }
+            if(o.getPoziomTrudnosci() == 2){
+                sredni.setSelected(true);
+            }
+            if(o.getPoziomTrudnosci() == 3){
+                trudny.setSelected(true);
+            }
+            uklad = o.getUkladPlanszy();
+            repaint();
+            System.out.println(gra.getPoziomTrudnosci());
+            System.out.println(gra.getNrPlanszy());
 
-    }
+            }
+
+        }
+
 
     @Override
     public void mouseClicked(MouseEvent e) {
