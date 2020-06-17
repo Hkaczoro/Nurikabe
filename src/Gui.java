@@ -159,7 +159,7 @@ public class Gui extends JFrame implements ActionListener {
                 int[][] uklad = gra.getUkladPlanszy();
                 a = 7;
                 g.setColor(Color.BLACK);
-                g.fillRect(0,0,610,600);
+                g.fillRect(0,0,599,600);
                 g.setColor(Color.white);
                 for(int i = 0; i<a; i++){
                     int kx = 0;
@@ -194,7 +194,7 @@ public class Gui extends JFrame implements ActionListener {
                 int[][] uklad = gra.getUkladPlanszy();
                 a = 10;
                 g.setColor(Color.BLACK);
-                g.fillRect(0,0,600,600);
+                g.fillRect(0,0,603,603);
                 g.setColor(Color.WHITE);
                 for(int i = 0; i<a; i++){
                     int kx = 0;
