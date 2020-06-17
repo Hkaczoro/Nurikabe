@@ -118,6 +118,9 @@ public class Gui extends JFrame implements ActionListener {
             int ky = 0;
             int a = 0;
             if(latwy.isSelected()){
+                Gra gra = new Gra();
+                gra.losujUklad(1);
+                int[][] uklad = gra.getUkladPlanszy();
                 a = 5;
                 g.setColor(Color.BLACK);
                 g.fillRect(0,0,600,600);
@@ -125,6 +128,25 @@ public class Gui extends JFrame implements ActionListener {
                 for(int i = 0; i<a; i++){
                     int kx = 0;
                     for(int j = 0; j<a; j++){
+                        if(uklad[i][j] == 10){
+                            g.setColor(Color.white);
+                            g.fillRect(3 + kx ,3 + ky,116,116);
+                        }
+                        else if (uklad[i][j] == 11){
+                            g.setColor(Color.BLUE);
+                            g.fillRect(3 + kx ,3 + ky,116,116);
+                        }
+                        else if (uklad[i][j] == 12){
+                            g.setColor(Color.GREEN);
+                            g.fillRect(3 + kx ,3 + ky,116,116);
+                        }
+                        else {
+                            g.setColor(Color.GREEN);
+                            g.fillRect(3 + kx ,3 + ky,116,116);
+                            String q;
+                            q = String.valueOf(uklad[i][j]);
+                            g.drawString(q, 40 + kx, 40 +ky);
+                        }
                         g.fillRect(3 + kx ,3 + ky,116,116);
                         kx += 120;
                     }
