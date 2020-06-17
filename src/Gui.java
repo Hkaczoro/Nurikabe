@@ -15,6 +15,10 @@ public class Gui extends JFrame implements ActionListener {
 
     private ButtonGroup level;
 
+    private Gra gra = new Gra();
+
+    private int[][] uklad;
+
     public Gui(){
         super("Nurikabe");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -86,7 +90,10 @@ public class Gui extends JFrame implements ActionListener {
         add(panel);
 
 
-
+        Point p = MouseInfo.getPointerInfo().getLocation();
+        int x = p.x;
+        int y = p.y;
+        System.out.println(x + ", " + y);
 
 
         setLayout(null);
@@ -98,15 +105,22 @@ public class Gui extends JFrame implements ActionListener {
         Object source = actionEvent.getSource();
 
         if (source == nowaGra) {
+            if(latwy.isSelected()) {
+                gra.losujUklad(1);
+                uklad = gra.getUkladPlanszy();
+                gra.setPoziomTrudnosci(1);
+            }
+            if(sredni.isSelected()){
+                gra.losujUklad(2);
+                uklad = gra.getUkladPlanszy();
+                gra.setPoziomTrudnosci(2);
+            }
+            if(trudny.isSelected()){
+                gra.losujUklad(3);
+                uklad = gra.getUkladPlanszy();
+                gra.setPoziomTrudnosci(3);
+            }
             repaint();
-            //JPanel ramka = new JPanel();
-            //MojPanelGraf panel = new MojPanelGraf();
-            //setContentPane(panel);
-            //panel.setBounds(150,150,349,349);
-            //repaint();
-
-            //setBounds(100,100,250,250);
-            //setVisible(true);
         }
 
     }
@@ -117,10 +131,7 @@ public class Gui extends JFrame implements ActionListener {
         public void paintComponent(Graphics g) {
             int ky = 0;
             int a = 0;
-            if(latwy.isSelected()){
-                Gra gra = new Gra();
-                gra.losujUklad(1);
-                int[][] uklad = gra.getUkladPlanszy();
+            if(gra.getPoziomTrudnosci() == 1){
                 a = 5;
                 g.setColor(Color.BLACK);
                 g.fillRect(0,0,602,602);
@@ -153,10 +164,7 @@ public class Gui extends JFrame implements ActionListener {
                     ky += 120;
                 }
             }
-            if(sredni.isSelected()){
-                Gra gra = new Gra();
-                gra.losujUklad(2);
-                int[][] uklad = gra.getUkladPlanszy();
+            if(gra.getPoziomTrudnosci() == 2){
                 a = 7;
                 g.setColor(Color.BLACK);
                 g.fillRect(0,0,599,600);
@@ -189,10 +197,7 @@ public class Gui extends JFrame implements ActionListener {
                     ky += 85;
                 }
             }
-            if(trudny.isSelected()){
-                Gra gra = new Gra();
-                gra.losujUklad(3);
-                int[][] uklad = gra.getUkladPlanszy();
+            if(gra.getPoziomTrudnosci() == 3){
                 a = 10;
                 g.setColor(Color.BLACK);
                 g.fillRect(0,0,603,603);
@@ -225,19 +230,8 @@ public class Gui extends JFrame implements ActionListener {
                     ky += 60;
                 }
             }
-           // g.setColor(Color.BLACK);
-          //  g.fillRect(0,0,600,600);
-           // g.setColor(Color.white);
-            /**
-            for(int i = 0; i<a; i++){
-                int kx = 0;
-                for(int j = 0; j<a; j++){
-                    g.fillRect(3 + kx ,3 + ky,25,25);
-                    kx += 28;
-                }
-                ky += 28;
-            }
-             */
+
+
         }
 
 
