@@ -31,6 +31,7 @@ public class Gui extends JFrame implements ActionListener {
         wczytaj.setBounds(20, 80, 120, 40);
         //wczytaj.setBorderPainted(false);
         //wczytaj.setOpaque(true);
+        wczytaj.addActionListener(this);
         add(wczytaj);
 
         wczytajText = new JTextArea();
@@ -39,6 +40,7 @@ public class Gui extends JFrame implements ActionListener {
 
         zapisz = new JButton("Zapisz");
         zapisz.setBounds(20, 165, 120, 40);
+        zapisz.addActionListener(this);
         add(zapisz);
 
         zapiszText = new JTextArea();
@@ -47,11 +49,13 @@ public class Gui extends JFrame implements ActionListener {
 
         podpowiedz = new JButton("Podpowiedź");
         podpowiedz.setBounds(20, 250, 120, 60);
+        podpowiedz.addActionListener(this);
         add(podpowiedz);
 
         sprawdz = new JButton("Sprawdź");
         sprawdz.setBounds(20, 340, 120, 60);
         sprawdz.setForeground(Color.DARK_GRAY);
+        sprawdz.addActionListener(this);
         add(sprawdz);
 
         levelLabel = new JLabel("Poziom trudnośći: ");
@@ -76,6 +80,10 @@ public class Gui extends JFrame implements ActionListener {
        // Plansza plansza = new Plansza(1);
        // plansza.setBounds(610, 10, 600, 600);
        // add(plansza);
+        MojPanelGraf panel = new MojPanelGraf();
+        //setContentPane(panel);
+        panel.setBounds(150,150,349,349);
+        add(panel);
 
 
 
@@ -88,16 +96,19 @@ public class Gui extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         Object source = actionEvent.getSource();
+
         if (source == nowaGra) {
+            repaint();
             //JPanel ramka = new JPanel();
-            MojPanelGraf panel = new MojPanelGraf();
-            setContentPane(panel);
-            panel.setBounds(150,150,349,349);
+            //MojPanelGraf panel = new MojPanelGraf();
+            //setContentPane(panel);
+            //panel.setBounds(150,150,349,349);
             //repaint();
 
             //setBounds(100,100,250,250);
-            setVisible(true);
+            //setVisible(true);
         }
+
     }
 
     class MojPanelGraf extends JPanel {
