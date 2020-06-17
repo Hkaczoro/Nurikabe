@@ -19,10 +19,13 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
 
     private int[][] uklad;
 
+<<<<<<< HEAD
     private int x, y;
 
     ArrayList<Point> points = new ArrayList<Point>();
 
+=======
+>>>>>>> 0a48f50363ba1013b41acfe7235920133268e8ab
     public Gui(){
         super("Nurikabe");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -94,8 +97,15 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
         add(panel);
 
 
+<<<<<<< HEAD
         addMouseListener(this);
         addMouseMotionListener(this);
+=======
+        Point p = MouseInfo.getPointerInfo().getLocation();
+        int x = p.x;
+        int y = p.y;
+        System.out.println(x + ", " + y);
+>>>>>>> 0a48f50363ba1013b41acfe7235920133268e8ab
 
 
         setLayout(null);
