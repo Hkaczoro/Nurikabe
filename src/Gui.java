@@ -1,9 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
+import java.util.ArrayList;
 
-public class Gui extends JFrame implements ActionListener {
+public class Gui extends JFrame implements ActionListener, MouseListener, MouseMotionListener {
 
     private JButton nowaGra, zapisz, wczytaj, podpowiedz, sprawdz;
 
@@ -18,6 +18,13 @@ public class Gui extends JFrame implements ActionListener {
     private Gra gra = new Gra();
 
     private int[][] uklad;
+
+    private int x, y;
+
+    private Component frame;
+
+    ArrayList<Point> points = new ArrayList<Point>();
+
 
     public Gui(){
         super("Nurikabe");
@@ -81,14 +88,18 @@ public class Gui extends JFrame implements ActionListener {
         add(sredni);
         add(trudny);
 
-       // Plansza plansza = new Plansza(1);
-       // plansza.setBounds(610, 10, 600, 600);
-       // add(plansza);
+        // Plansza plansza = new Plansza(1);
+        // plansza.setBounds(610, 10, 600, 600);
+        // add(plansza);
         MojPanelGraf panel = new MojPanelGraf();
         //setContentPane(panel);
         panel.setBounds(150, 5,620,620);
         add(panel);
 
+
+
+        addMouseListener(this);
+        addMouseMotionListener(this);
 
         Point p = MouseInfo.getPointerInfo().getLocation();
         int x = p.x;
@@ -123,7 +134,85 @@ public class Gui extends JFrame implements ActionListener {
             repaint();
         }
 
+        if(source == sprawdz){
+            Poprawnosc poprawnosc = new Poprawnosc();
+            int nr = gra.getNrPlanszy();
+            poprawnosc.zaladujPlansze(nr);
+            int poziomTr = gra.getPoziomTrudnosci();
+            if(poprawnosc.sprawdzPoprawnosc(uklad, poziomTr)){
+                JOptionPane.showMessageDialog(frame, "Udało ci się!");
+            }
+            else {
+                JOptionPane.showMessageDialog(frame, "Nie udało ci się.");
+            }
+
+        }
+
     }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        x = e.getX();
+        y = e.getY();
+        points.add(new Point(x, y));
+        if(gra.getPoziomTrudnosci() == 1){
+            int a = 5;
+            int ky = 8;
+            for(int i = 0; i<a; i++){
+                int kx = 150;
+                for(int j = 0; j<a; j++){
+                     if ((x>kx+3) && (x<kx+123) && (y>ky+3) && (y<ky+130)) {
+                         if(uklad[i][j]==10) {
+                             uklad[i][j] = 11;
+                         }
+                         else if(uklad[i][j]==11){
+                             uklad[i][j] = 12;
+                         }
+                         else if(uklad[i][j]==12){
+                             uklad[i][j] = 10;
+                         }
+
+                         System.out.println(i + ", " + j);
+                    }
+                    kx += 120;
+                }
+                ky += 127;
+            }
+        }
+        System.out.println("MousePressed");
+        repaint();
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+
+    }
+
 
     class MojPanelGraf extends JPanel {
 
