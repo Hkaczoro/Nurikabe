@@ -114,11 +114,12 @@ public class Poprawnosc extends Gra{
         else{
             a = 10;
         }
+        outerloop:
         for(int i = 0; i < a; i++){
             for(int x = 0; x < a; x++){
                 if(poprawnaPlansza[i][x] != planszaUzytkownika[i][x]){
                     planszaUzytkownika[i][x] = poprawnaPlansza[i][x];
-                    continue;
+                    break outerloop;
                 }
             }
         }

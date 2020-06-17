@@ -19,12 +19,12 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
 
     private int[][] uklad;
 
-    private int x, y;
-
     private Component frame;
 
-    ArrayList<Point> points = new ArrayList<Point>();
 
+    private int x, y;
+
+    ArrayList<Point> points = new ArrayList<Point>();
 
     public Gui(){
         super("Nurikabe");
@@ -97,14 +97,11 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
         add(panel);
 
 
-
         addMouseListener(this);
         addMouseMotionListener(this);
 
-        Point p = MouseInfo.getPointerInfo().getLocation();
-        int x = p.x;
-        int y = p.y;
-        System.out.println(x + ", " + y);
+
+
 
 
         setLayout(null);
@@ -147,6 +144,14 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
             }
 
         }
+        if (source == podpowiedz){
+            Poprawnosc poprawnosc = new Poprawnosc();
+            int nr = gra.getNrPlanszy();
+            poprawnosc.zaladujPlansze(nr);
+            int poziomTr = gra.getPoziomTrudnosci();
+            poprawnosc.solwer(uklad, poziomTr);
+            repaint();
+        }
 
     }
 
@@ -162,28 +167,93 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
         points.add(new Point(x, y));
         if(gra.getPoziomTrudnosci() == 1){
             int a = 5;
-            int ky = 8;
+            int ky = 5;
             for(int i = 0; i<a; i++){
                 int kx = 150;
                 for(int j = 0; j<a; j++){
-                     if ((x>kx+3) && (x<kx+123) && (y>ky+3) && (y<ky+130)) {
-                         if(uklad[i][j]==10) {
-                             uklad[i][j] = 11;
-                         }
-                         else if(uklad[i][j]==11){
+                     if ((x>kx+3) && (x<kx+123) && (y>ky+3) && (y<ky+123)) {
+
+                         if(uklad[i][j]==11) {
                              uklad[i][j] = 12;
                          }
-                         else if(uklad[i][j]==12){
+
+                         else if(uklad[i][j]==10) {
+                             uklad[i][j] = 11;
+                         }
+                         else if(uklad[i][j]==12) {
                              uklad[i][j] = 10;
                          }
 
-                         System.out.println(i + ", " + j);
+                         System.out.println("i: " +i + " " + "j: " +j);
+
+
                     }
                     kx += 120;
                 }
-                ky += 127;
+
+                ky += 120;
             }
         }
+
+        if(gra.getPoziomTrudnosci() == 2){
+            int a = 7;
+            int ky = 5;
+            for(int i = 0; i<a; i++){
+                int kx = 150;
+                for(int j = 0; j<a; j++){
+                    if ((x>kx+3) && (x<kx+123) && (y>ky+3) && (y<ky+123)) {
+
+                        if(uklad[i][j]==11) {
+                            uklad[i][j] = 12;
+                        }
+
+                        else if(uklad[i][j]==10) {
+                            uklad[i][j] = 11;
+                        }
+                        else if(uklad[i][j]==12) {
+                            uklad[i][j] = 10;
+                        }
+
+                        System.out.println("i: " +i + " " + "j: " +j);
+
+
+                    }
+                    kx += 120;
+                }
+
+                ky += 120;
+            }
+        }
+        if(gra.getPoziomTrudnosci() == 3){
+            int a = 10;
+            int ky = 5;
+            for(int i = 0; i<a; i++){
+                int kx = 150;
+                for(int j = 0; j<a; j++){
+                    if ((x>kx+3) && (x<kx+60) && (y>ky+3) && (y<ky+60)) {
+
+                        if(uklad[i][j]==11) {
+                            uklad[i][j] = 12;
+                        }
+
+                        else if(uklad[i][j]==10) {
+                            uklad[i][j] = 11;
+                        }
+                        else if(uklad[i][j]==12) {
+                            uklad[i][j] = 10;
+                        }
+
+                        System.out.println("i: " +i + " " + "j: " +j);
+
+
+                    }
+                    kx += 60;
+                }
+
+                ky += 60;
+            }
+        }
+
         System.out.println("MousePressed");
         repaint();
     }
