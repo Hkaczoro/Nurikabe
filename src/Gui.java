@@ -144,8 +144,7 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
             }
 
         }
-<<<<<<< HEAD
-        if (source == podpowiedz){
+        if(source == podpowiedz){
             Poprawnosc poprawnosc = new Poprawnosc();
             int nr = gra.getNrPlanszy();
             poprawnosc.zaladujPlansze(nr);
@@ -153,8 +152,6 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
             poprawnosc.solwer(uklad, poziomTr);
             repaint();
         }
-=======
->>>>>>> 437490af7f801f12a318e48e34e555b384061595
 
     }
 
@@ -200,11 +197,11 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
 
         if(gra.getPoziomTrudnosci() == 2){
             int a = 7;
-            int ky = 5;
+            int ky = 27;
             for(int i = 0; i<a; i++){
                 int kx = 150;
                 for(int j = 0; j<a; j++){
-                    if ((x>kx+3) && (x<kx+123) && (y>ky+3) && (y<ky+123)) {
+                    if ((x>kx+3) && (x<kx+88) && (y>ky+3) && (y<ky+88)) {
 
                         if(uklad[i][j]==11) {
                             uklad[i][j] = 12;
@@ -221,19 +218,20 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
 
 
                     }
-                    kx += 120;
+                    kx += 85;
                 }
 
-                ky += 120;
+                ky += 85;
             }
+
         }
         if(gra.getPoziomTrudnosci() == 3){
             int a = 10;
-            int ky = 5;
+            int ky = 27;
             for(int i = 0; i<a; i++){
                 int kx = 150;
                 for(int j = 0; j<a; j++){
-                    if ((x>kx+3) && (x<kx+60) && (y>ky+3) && (y<ky+60)) {
+                    if ((x>kx+3) && (x<kx+63) && (y>ky+3) && (y<ky+63)) {
 
                         if(uklad[i][j]==11) {
                             uklad[i][j] = 12;
@@ -255,11 +253,11 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
 
                 ky += 60;
             }
+            System.out.println(x + ", " + y);
         }
 
         System.out.println("MousePressed");
         repaint();
-<<<<<<< HEAD
     }
 
     @Override
@@ -278,26 +276,6 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
     }
 
     @Override
-=======
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
-    }
-
-    @Override
->>>>>>> 437490af7f801f12a318e48e34e555b384061595
     public void mouseDragged(MouseEvent e) {
 
     }
