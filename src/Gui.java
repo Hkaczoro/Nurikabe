@@ -82,7 +82,7 @@ public class Gui extends JFrame implements ActionListener {
        // add(plansza);
         MojPanelGraf panel = new MojPanelGraf();
         //setContentPane(panel);
-        panel.setBounds(150,150,349,349);
+        panel.setBounds(150, 5,602,590);
         add(panel);
 
 
@@ -119,24 +119,59 @@ public class Gui extends JFrame implements ActionListener {
             int a = 0;
             if(latwy.isSelected()){
                 a = 5;
+                g.setColor(Color.BLACK);
+                g.fillRect(0,0,600,600);
+                g.setColor(Color.white);
+                for(int i = 0; i<a; i++){
+                    int kx = 0;
+                    for(int j = 0; j<a; j++){
+                        g.fillRect(3 + kx ,3 + ky,116,116);
+                        kx += 120;
+                    }
+                    ky += 120;
+                }
             }
             if(sredni.isSelected()){
                 a = 7;
+                g.setColor(Color.BLACK);
+                g.fillRect(0,0,610,600);
+                g.setColor(Color.white);
+                for(int i = 0; i<a; i++){
+                    int kx = 0;
+                    for(int j = 0; j<a; j++){
+                        g.fillRect(3 + kx ,3 + ky,83,83);
+                        kx += 85;
+                    }
+                    ky += 85;
+                }
             }
             if(trudny.isSelected()){
                 a = 10;
+                g.setColor(Color.BLACK);
+                g.fillRect(0,0,600,600);
+                g.setColor(Color.WHITE);
+                for(int i = 0; i<a; i++){
+                    int kx = 0;
+                    for(int j = 0; j<a; j++){
+                        g.fillRect(3 + kx ,3 + ky,57,57);
+                        kx += 60;
+                    }
+                    ky += 60;
+                }
             }
-            g.setColor(Color.BLACK);
-            g.fillRect(0,0,199,199);
-            g.setColor(Color.white);
+           // g.setColor(Color.BLACK);
+          //  g.fillRect(0,0,600,600);
+           // g.setColor(Color.white);
+            /**
             for(int i = 0; i<a; i++){
                 int kx = 0;
-                for(int j = 0; j<a;j++){
+                for(int j = 0; j<a; j++){
                     g.fillRect(3 + kx ,3 + ky,25,25);
                     kx += 28;
                 }
                 ky += 28;
             }
+             */
         }
 
 
