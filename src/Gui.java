@@ -144,6 +144,7 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
             }
 
         }
+<<<<<<< HEAD
         if (source == podpowiedz){
             Poprawnosc poprawnosc = new Poprawnosc();
             int nr = gra.getNrPlanszy();
@@ -152,6 +153,8 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
             poprawnosc.solwer(uklad, poziomTr);
             repaint();
         }
+=======
+>>>>>>> 437490af7f801f12a318e48e34e555b384061595
 
     }
 
@@ -256,6 +259,7 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
 
         System.out.println("MousePressed");
         repaint();
+<<<<<<< HEAD
     }
 
     @Override
@@ -274,6 +278,26 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
     }
 
     @Override
+=======
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+    @Override
+>>>>>>> 437490af7f801f12a318e48e34e555b384061595
     public void mouseDragged(MouseEvent e) {
 
     }
