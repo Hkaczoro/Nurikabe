@@ -102,6 +102,27 @@ public class Poprawnosc extends Gra{
         }
         return true;
     }
+
+    public void solwer(int[][] planszaUzytkownika, int poziomTrudnosci){
+        int a;
+        if (poziomTrudnosci == 1){
+            a = 5;
+        }
+        else if (poziomTrudnosci == 2){
+            a = 7;
+        }
+        else{
+            a = 10;
+        }
+        for(int i = 0; i < a; i++){
+            for(int x = 0; x < a; x++){
+                if(poprawnaPlansza[i][x] != planszaUzytkownika[i][x]){
+                    planszaUzytkownika[i][x] = poprawnaPlansza[i][x];
+                    continue;
+                }
+            }
+        }
+    }
     public static void main(String[] args){
         Gra gra = new Gra();
         gra.losujUklad(2);
