@@ -19,13 +19,13 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
 
     private int[][] uklad;
 
-<<<<<<< HEAD
+    private Component frame;
+
+
     private int x, y;
 
     ArrayList<Point> points = new ArrayList<Point>();
 
-=======
->>>>>>> 0a48f50363ba1013b41acfe7235920133268e8ab
     public Gui(){
         super("Nurikabe");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -97,15 +97,11 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
         add(panel);
 
 
-<<<<<<< HEAD
         addMouseListener(this);
         addMouseMotionListener(this);
-=======
-        Point p = MouseInfo.getPointerInfo().getLocation();
-        int x = p.x;
-        int y = p.y;
-        System.out.println(x + ", " + y);
->>>>>>> 0a48f50363ba1013b41acfe7235920133268e8ab
+
+
+
 
 
         setLayout(null);
@@ -135,6 +131,20 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
             repaint();
         }
 
+        if(source == sprawdz){
+            Poprawnosc poprawnosc = new Poprawnosc();
+            int nr = gra.getNrPlanszy();
+            poprawnosc.zaladujPlansze(nr);
+            int poziomTr = gra.getPoziomTrudnosci();
+            if(poprawnosc.sprawdzPoprawnosc(uklad, poziomTr)){
+                JOptionPane.showMessageDialog(frame, "Udało ci się!");
+            }
+            else {
+                JOptionPane.showMessageDialog(frame, "Nie udało ci się.");
+            }
+
+        }
+
     }
 
     @Override
@@ -154,17 +164,88 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
                 int kx = 150;
                 for(int j = 0; j<a; j++){
                      if ((x>kx+3) && (x<kx+123) && (y>ky+3) && (y<ky+123)) {
-                         if(uklad[i][j]==10) {
+
+                         if(uklad[i][j]==11) {
+                             uklad[i][j] = 12;
+                         }
+
+                         else if(uklad[i][j]==10) {
                              uklad[i][j] = 11;
                          }
-                         System.out.println(j);
+                         else if(uklad[i][j]==12) {
+                             uklad[i][j] = 10;
+                         }
+
+                         System.out.println("i: " +i + " " + "j: " +j);
+
+
                     }
                     kx += 120;
                 }
-                System.out.println(i);
+
                 ky += 120;
             }
         }
+
+        if(gra.getPoziomTrudnosci() == 2){
+            int a = 7;
+            int ky = 5;
+            for(int i = 0; i<a; i++){
+                int kx = 150;
+                for(int j = 0; j<a; j++){
+                    if ((x>kx+3) && (x<kx+123) && (y>ky+3) && (y<ky+123)) {
+
+                        if(uklad[i][j]==11) {
+                            uklad[i][j] = 12;
+                        }
+
+                        else if(uklad[i][j]==10) {
+                            uklad[i][j] = 11;
+                        }
+                        else if(uklad[i][j]==12) {
+                            uklad[i][j] = 10;
+                        }
+
+                        System.out.println("i: " +i + " " + "j: " +j);
+
+
+                    }
+                    kx += 120;
+                }
+
+                ky += 120;
+            }
+        }
+        if(gra.getPoziomTrudnosci() == 3){
+            int a = 10;
+            int ky = 5;
+            for(int i = 0; i<a; i++){
+                int kx = 150;
+                for(int j = 0; j<a; j++){
+                    if ((x>kx+3) && (x<kx+60) && (y>ky+3) && (y<ky+60)) {
+
+                        if(uklad[i][j]==11) {
+                            uklad[i][j] = 12;
+                        }
+
+                        else if(uklad[i][j]==10) {
+                            uklad[i][j] = 11;
+                        }
+                        else if(uklad[i][j]==12) {
+                            uklad[i][j] = 10;
+                        }
+
+                        System.out.println("i: " +i + " " + "j: " +j);
+
+
+                    }
+                    kx += 60;
+                }
+
+                ky += 60;
+            }
+        }
+
         System.out.println("MousePressed");
         repaint();
     }
