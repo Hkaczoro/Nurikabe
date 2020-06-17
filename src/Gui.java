@@ -24,6 +24,7 @@ public class Gui extends JFrame implements ActionListener {
 
         nowaGra = new JButton("Nowa Gra");
         nowaGra.setBounds(20, 20, 120, 40);
+        nowaGra.addActionListener(this);
         add(nowaGra);
 
         wczytaj = new JButton("Wczytaj");
@@ -72,6 +73,10 @@ public class Gui extends JFrame implements ActionListener {
         add(sredni);
         add(trudny);
 
+       // Plansza plansza = new Plansza(1);
+       // plansza.setBounds(610, 10, 600, 600);
+       // add(plansza);
+
 
 
 
@@ -88,32 +93,41 @@ public class Gui extends JFrame implements ActionListener {
             MojPanelGraf panel = new MojPanelGraf();
             setContentPane(panel);
             panel.setBounds(150,150,349,349);
-
-
-            repaint();
+            //repaint();
 
             //setBounds(100,100,250,250);
-            //setVisible(true);
+            setVisible(true);
         }
     }
 
     class MojPanelGraf extends JPanel {
 
-
+        @Override
         public void paintComponent(Graphics g) {
             int ky = 0;
+            int a = 0;
+            if(latwy.isSelected()){
+                a = 5;
+            }
+            if(sredni.isSelected()){
+                a = 7;
+            }
+            if(trudny.isSelected()){
+                a = 10;
+            }
             g.setColor(Color.BLACK);
             g.fillRect(0,0,199,199);
             g.setColor(Color.white);
-            for(int i = 0; i<7;i++){
+            for(int i = 0; i<a; i++){
                 int kx = 0;
-                for(int j = 0; j<7;j++){
+                for(int j = 0; j<a;j++){
                     g.fillRect(3 + kx ,3 + ky,25,25);
                     kx += 28;
                 }
                 ky += 28;
             }
         }
+
 
     }
 }
