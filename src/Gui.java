@@ -18,7 +18,7 @@ public class Gui extends JFrame implements ActionListener {
     public Gui(){
         super("Nurikabe");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(760, 620);
+        setSize(800, 700);
         setResizable(false);
         setLocation(50, 50);
 
@@ -82,7 +82,7 @@ public class Gui extends JFrame implements ActionListener {
        // add(plansza);
         MojPanelGraf panel = new MojPanelGraf();
         //setContentPane(panel);
-        panel.setBounds(150, 5,602,590);
+        panel.setBounds(150, 5,620,620);
         add(panel);
 
 
@@ -123,7 +123,7 @@ public class Gui extends JFrame implements ActionListener {
                 int[][] uklad = gra.getUkladPlanszy();
                 a = 5;
                 g.setColor(Color.BLACK);
-                g.fillRect(0,0,600,600);
+                g.fillRect(0,0,602,602);
                 g.setColor(Color.white);
                 for(int i = 0; i<a; i++){
                     int kx = 0;
@@ -141,13 +141,13 @@ public class Gui extends JFrame implements ActionListener {
                             g.fillRect(3 + kx ,3 + ky,116,116);
                         }
                         else {
-                            g.setColor(Color.GREEN);
-                            g.fillRect(3 + kx ,3 + ky,116,116);
                             String q;
                             q = String.valueOf(uklad[i][j]);
-                            g.drawString(q, 40 + kx, 40 +ky);
+                            Font font = new Font(" ", Font.BOLD, 45);
+                            g.setFont(font);
+                            g.drawString(q, 50+kx, 77 +ky);
                         }
-                        //g.fillRect(3 + kx ,3 + ky,116,116);
+
                         kx += 120;
                     }
                     ky += 120;
@@ -177,13 +177,12 @@ public class Gui extends JFrame implements ActionListener {
                             g.fillRect(3 + kx ,3 + ky,83,83);
                         }
                         else {
-                            g.setColor(Color.GREEN);
-                            g.fillRect(3 + kx ,3 + ky,83,83);
                             String q;
                             q = String.valueOf(uklad[i][j]);
-                            g.drawString(q, 40 + kx, 40 +ky);
+                            Font font = new Font(" ", Font.BOLD, 35);
+                            g.setFont(font);
+                            g.drawString(q, 35+kx, 55 +ky);
                         }
-                        //g.fillRect(3 + kx ,3 + ky,83,83);
                         kx += 85;
                     }
                     ky += 85;
@@ -212,14 +211,16 @@ public class Gui extends JFrame implements ActionListener {
                             g.setColor(Color.GREEN);
                             g.fillRect(3 + kx ,3 + ky,57,57);
                         }
-                        else {
-                            g.setColor(Color.GREEN);
-                            g.fillRect(3 + kx ,3 + ky,57,57);
+                        else if (uklad[i][j] >= 1 && uklad[i][j] <= 9){
+                            //g.setColor(Color.GREEN);
+                            //g.fillRect(3 + kx ,3 + ky,57,57);
                             String q;
                             q = String.valueOf(uklad[i][j]);
-                            g.drawString(q, 40 + kx, 40 +ky);
+                            Font font = new Font(" ", Font.BOLD, 30);
+                            g.setFont(font);
+                            g.drawString(q, 22+kx, 40 +ky);
                         }
-                        g.fillRect(3 + kx ,3 + ky,57,57);
+                       // g.fillRect(3 + kx ,3 + ky,57,57);
                         kx += 60;
                     }
                     ky += 60;
