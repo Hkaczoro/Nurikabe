@@ -29,7 +29,7 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
     public Gui(){
         super("Nurikabe");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(800, 700);
+        setSize(760, 640);
         setResizable(false);
         setLocation(50, 50);
 
@@ -167,7 +167,7 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
         points.add(new Point(x, y));
         if(gra.getPoziomTrudnosci() == 1){
             int a = 5;
-            int ky = 5;
+            int ky = 25;
             for(int i = 0; i<a; i++){
                 int kx = 150;
                 for(int j = 0; j<a; j++){
