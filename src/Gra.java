@@ -1,43 +1,67 @@
 import java.util.Random;
 
 public class Gra {
-
+    /**
+     * liczba reprezentująca poziom trudności planszy(1 - łatwy, 2 - średni, 3 - trudny)
+     */
     private int poziomTrudnosci;
     /**
+     * Tablica dwuwymiarowa reprezentująca danu układ planszy
      * 1-9 liczebnosc wyspy
      * 10 - pole puste
      * 11 - woda
      * 12 - ląd
      */
     private int[][] ukladPlanszy;
-
+    /**
+     * Numer identyfikacyjny planszy
+     */
     private int nrPlanszy;
 
+    /**
+     * Metoda do zwracania numeru planszy
+     * @return numer planszy
+     */
     public int getNrPlanszy() {
         return nrPlanszy;
     }
 
+    /**
+     * Metoda do ustawiania numeru planszy
+     * @param nrPlanszy numer identyfikacyjny planszy
+     */
     public void setNrPlanszy(int nrPlanszy) {
         this.nrPlanszy = nrPlanszy;
     }
 
+    /**
+     * Metoda do zwracania poziomu trudności
+     * @return poziom trudności gry
+     */
     public int getPoziomTrudnosci() {
         return poziomTrudnosci;
     }
 
+    /**
+     * Metoda do ustawiania poziomu trudności
+     * @param poziomTrudnosci poziom trudności gry
+     */
     public void setPoziomTrudnosci(int poziomTrudnosci) {
         this.poziomTrudnosci = poziomTrudnosci;
     }
 
+    /**
+     * Metoda do zwracania tablicy dwuwymiarowej reprezentującej układ planszy
+     * @return
+     */
     public int[][] getUkladPlanszy() {
-
         return ukladPlanszy;
     }
 
-    public void setUkladPlanszy(int[][] ukladPlanszy){
-        this.ukladPlanszy = ukladPlanszy;
-    }
-
+    /**
+     * Metoda do losowania układu planszy w zależności od poziomu trudności
+     * @param poziomTrudnosci poziom trudności wybrany przez użytkownika
+     */
     public void losujUklad(int poziomTrudnosci){
         this.poziomTrudnosci = poziomTrudnosci;
         Random random = new Random();
@@ -117,6 +141,11 @@ public class Gra {
             }
         }
     }
+
+    /**
+     * Metoda główna (do testów poprawności metod)
+     * @param args argumenty klasy
+     */
     public static void main(String[] args){
         Gra gra = new Gra();
         gra.losujUklad(1);
