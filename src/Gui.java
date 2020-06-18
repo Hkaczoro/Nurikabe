@@ -23,6 +23,10 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
     private int[][] uklad;
 
     private Component frame;
+    private int proba=0;
+    public int getProba(){
+        return proba;
+    }
 
 
     private int x, y;
@@ -38,7 +42,7 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
          */
         super("Nurikabe");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(800, 700);
+        setSize(780, 660);
         setResizable(false);
         setLocation(50, 50);
 
@@ -170,12 +174,13 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
         }
 
         if(source == sprawdz){
+            proba++;
             Poprawnosc poprawnosc = new Poprawnosc();
             int nr = gra.getNrPlanszy();
             poprawnosc.zaladujPlansze(nr);
             int poziomTr = gra.getPoziomTrudnosci();
             if(poprawnosc.sprawdzPoprawnosc(uklad, poziomTr)){
-                JOptionPane.showMessageDialog(frame, "Udało ci się!");
+                JOptionPane.showMessageDialog(frame, "Udało ci się!\n Ilość prób: " + getProba());
             }
             else {
                 JOptionPane.showMessageDialog(frame, "Nie udało ci się.\nLiczba błędów: " + poprawnosc.getBledy());

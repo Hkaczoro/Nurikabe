@@ -17,6 +17,7 @@ public class Poprawnosc extends Gra{
      */
     private int bledy;
 
+
     /**
      * Metoda zwracająca ilość błedów
      * @return liczbe błędów
@@ -24,6 +25,7 @@ public class Poprawnosc extends Gra{
     public int getBledy(){
         return bledy;
     }
+
 
     /**
      * Metoda ładująca poprawne ułożenie planszy
@@ -38,6 +40,15 @@ public class Poprawnosc extends Gra{
                                 {12, 12, 12, 11, 2}};
             this.poprawnaPlansza = poprawna;
         }
+        if(nrPlanszy == 0){
+            int[][] poprawna = {{11, 11, 11, 11, 11},
+                    {12, 12, 11, 1, 11},
+                    {11, 3, 11, 11, 11},
+                    {4, 11, 11, 11, 12},
+                    {12, 12, 12, 11, 2}};
+            this.poprawnaPlansza = poprawna;
+        }
+
         if(nrPlanszy == 1){
             int[][] poprawna = {{1, 11, 11, 3, 11},
                                 {11, 2, 11, 12, 11},
@@ -107,6 +118,7 @@ public class Poprawnosc extends Gra{
                 for (int x = 0; x < 5; x++){
                     if (poprawnaPlansza[i][x] != planszaUzytkownika[i][x]){
                         bledy++;
+
                     }
                 }
             }
