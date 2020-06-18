@@ -165,8 +165,10 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
             try {
                 o.czytaj(nazwa);
             } catch (FileNotFoundException e) {
+                JOptionPane.showMessageDialog(frame, "Nie znaleziono pliku");
                 e.printStackTrace();
             }
+
             gra.setPoziomTrudnosci(o.getPoziomTrudnosci());
             gra.setNrPlanszy(o.getNumerPlanszy());
             if(o.getPoziomTrudnosci() == 1){
