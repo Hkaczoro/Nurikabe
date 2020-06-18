@@ -155,6 +155,7 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
         Object source = actionEvent.getSource();
 
         if (source == nowaGra) {
+            proba = 0;
             if(latwy.isSelected()) {
                 gra.losujUklad(1);
                 uklad = gra.getUkladPlanszy();
@@ -196,12 +197,14 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
             repaint();
         }
         if(source == zapisz){
+            proba = 0;
             OdczytIZapis z = new OdczytIZapis();
             String nazwa = zapiszText.getText() + ".csv";
             z.setNazwaZapisywanego(nazwa);
             z.write(uklad, gra.getPoziomTrudnosci(), gra.getNrPlanszy());
         }
         if(source == wczytaj){
+            proba = 0;
             OdczytIZapis o = new OdczytIZapis();
             String nazwa = wczytajText.getText();
             try {

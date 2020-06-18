@@ -40,14 +40,6 @@ public class Poprawnosc extends Gra{
                                 {12, 12, 12, 11, 2}};
             this.poprawnaPlansza = poprawna;
         }
-        if(nrPlanszy == 0){
-            int[][] poprawna = {{11, 11, 11, 11, 11},
-                    {12, 12, 11, 1, 11},
-                    {11, 3, 11, 11, 11},
-                    {4, 11, 11, 11, 12},
-                    {12, 12, 12, 11, 2}};
-            this.poprawnaPlansza = poprawna;
-        }
 
         if(nrPlanszy == 1){
             int[][] poprawna = {{1, 11, 11, 3, 11},
