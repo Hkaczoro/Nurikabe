@@ -5,7 +5,9 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Gui extends JFrame implements ActionListener, MouseListener, MouseMotionListener {
-
+    /**
+     * Inicjalizacja zmiennych prywatnych
+     */
     private JButton nowaGra, zapisz, wczytaj, podpowiedz, sprawdz;
 
     private JLabel levelLabel;
@@ -25,24 +27,34 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
 
     private int x, y;
 
-    ArrayList<Point> points = new ArrayList<Point>();
+    /**
+     * Konstruktor Klasy Gui
+     */
 
     public Gui(){
+        /**
+         * Ustawienie nazwy okienka GUI
+         * Rozmiariu okna, jego położenia na ekranie oraz zablokowanie rozszerzenia okna
+         */
         super("Nurikabe");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(760, 640);
+        setSize(800, 700);
         setResizable(false);
         setLocation(50, 50);
 
+        /**
+         * Dodanie przycisku do ActionListenera oraz ustawienie jego rozmiarów i położenia w oknie
+         */
         nowaGra = new JButton("Nowa Gra");
         nowaGra.setBounds(20, 20, 120, 40);
         nowaGra.addActionListener(this);
         add(nowaGra);
 
+        /**
+         * Dodanie przycisku do ActionListenera oraz ustawienie jego rozmiarów i położenia w oknie
+         */
         wczytaj = new JButton("Wczytaj");
         wczytaj.setBounds(20, 80, 120, 40);
-        //wczytaj.setBorderPainted(false);
-        //wczytaj.setOpaque(true);
         wczytaj.addActionListener(this);
         add(wczytaj);
 
@@ -50,6 +62,9 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
         wczytajText.setBounds(20, 125, 120, 20);
         add(wczytajText);
 
+        /**
+         * Dodanie przycisku do ActionListenera oraz ustawienie jego rozmiarów i położenia w oknie
+         */
         zapisz = new JButton("Zapisz");
         zapisz.setBounds(20, 165, 120, 40);
         zapisz.addActionListener(this);
@@ -59,11 +74,17 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
         zapiszText.setBounds(20, 210, 120, 20);
         add(zapiszText);
 
+        /**
+         * Dodanie przycisku do ActionListenera oraz ustawienie jego rozmiarów i położenia w oknie
+         */
         podpowiedz = new JButton("Podpowiedź");
         podpowiedz.setBounds(20, 250, 120, 60);
         podpowiedz.addActionListener(this);
         add(podpowiedz);
 
+        /**
+         * Dodanie przycisku do ActionListenera oraz ustawienie jego rozmiarów i położenia w oknie
+         */
         sprawdz = new JButton("Sprawdź");
         sprawdz.setBounds(20, 340, 120, 60);
         sprawdz.setForeground(Color.DARK_GRAY);
@@ -163,7 +184,7 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
             OdczytIZapis o = new OdczytIZapis();
             String nazwa = wczytajText.getText();
             try {
-                o.czytaj(nazwa);
+                o.czytaj(nazwa+".csv");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -182,6 +203,8 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
             repaint();
             System.out.println(gra.getPoziomTrudnosci());
             System.out.println(gra.getNrPlanszy());
+            System.out.println("");
+            System.out.println(uklad[0][1]);
 
             }
 
@@ -197,7 +220,7 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
     public void mousePressed(MouseEvent e) {
         x = e.getX();
         y = e.getY();
-        points.add(new Point(x, y));
+
         if(gra.getPoziomTrudnosci() == 1){
             int a = 5;
             int ky = 25;
