@@ -141,7 +141,7 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
                 JOptionPane.showMessageDialog(frame, "Udało ci się!");
             }
             else {
-                JOptionPane.showMessageDialog(frame, "Nie udało ci się.");
+                JOptionPane.showMessageDialog(frame, "Nie udało ci się.\nLiczba błędów: " + poprawnosc.getBledy());
             }
 
         }
