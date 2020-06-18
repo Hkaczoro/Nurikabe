@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
+
 
 public class Gui extends JFrame implements ActionListener, MouseListener, MouseMotionListener {
     /**
@@ -58,6 +58,9 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
         wczytaj.addActionListener(this);
         add(wczytaj);
 
+        /**
+         * Dodanie pola tekstowego oraz ustawienie jego rozmiarów i położenia w oknie
+         */
         wczytajText = new JTextArea();
         wczytajText.setBounds(20, 125, 120, 20);
         add(wczytajText);
@@ -70,6 +73,9 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
         zapisz.addActionListener(this);
         add(zapisz);
 
+        /**
+         * Dodanie pola tekstowego oraz ustawienie jego rozmiarów i położenia w oknie
+         */
         zapiszText = new JTextArea();
         zapiszText.setBounds(20, 210, 120, 20);
         add(zapiszText);
@@ -91,11 +97,16 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
         sprawdz.addActionListener(this);
         add(sprawdz);
 
+        /**
+         * Utworzenie etykiety
+         */
         levelLabel = new JLabel("Poziom trudnośći: ");
         levelLabel.setBounds(20, 430, 120, 30);
         add(levelLabel);
 
-
+        /**
+         * Utowrzenie przycisków wyboru poziomu trudności
+         */
         level = new ButtonGroup();
         latwy = new JRadioButton("Łatwy", true);
         sredni = new JRadioButton("Średni");
@@ -110,26 +121,31 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
         add(sredni);
         add(trudny);
 
-        // Plansza plansza = new Plansza(1);
-        // plansza.setBounds(610, 10, 600, 600);
-        // add(plansza);
+        /**
+         * Inicjalizacja panelu
+         */
         MojPanelGraf panel = new MojPanelGraf();
-        //setContentPane(panel);
         panel.setBounds(150, 5,620,620);
         add(panel);
 
-
+        /**
+         * Dodanie do komponentu nasłuchującego odpowiedniego słuchacza
+         */
         addMouseListener(this);
         addMouseMotionListener(this);
 
 
-
-
-
+        /**
+         * Ustawienie aby okienko było widoczne dla użytkownika
+         */
         setLayout(null);
         setVisible(true);
     }
 
+    /**
+     * Utworzenie  metody, która jest wywoływana, kiedy zostanie wygenerowane zdarzenie na obiekcie powiązanym z danym słuchaczem
+     * @param actionEvent  przechowuje wiele informacji w tym źródło
+     */
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         Object source = actionEvent.getSource();
@@ -218,6 +234,10 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
 
     }
 
+    /**
+     * Metoda wywoływana, gdy zostaje wciśnięty przycisk myszy
+     * @param e parametr z którego odczytujemy położenie kursora względem punktu (0,0) naszego panelu
+     */
     @Override
     public void mousePressed(MouseEvent e) {
         x = e.getX();
@@ -241,8 +261,6 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
                          else if(uklad[i][j]==12) {
                              uklad[i][j] = 10;
                          }
-
-                         System.out.println("i: " +i + " " + "j: " +j);
 
 
                     }
@@ -272,7 +290,6 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
                             uklad[i][j] = 10;
                         }
 
-                        System.out.println("i: " +i + " " + "j: " +j);
 
 
                     }
@@ -302,7 +319,6 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
                             uklad[i][j] = 10;
                         }
 
-                        System.out.println("i: " +i + " " + "j: " +j);
 
 
                     }
@@ -343,9 +359,14 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
 
     }
 
-
+    /**
+     * Klasa Panelu graficznego
+     */
     class MojPanelGraf extends JPanel {
-
+        /**
+         * Metoda która odpowida za rysowanie planszy w panelu naszego okna
+         * @param g
+         */
         @Override
         public void paintComponent(Graphics g) {
             int ky = 0;
@@ -377,7 +398,7 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
                             g.setFont(font);
                             g.drawString(q, 50+kx, 77 +ky);
                         }
-                        //g.fillRect(3 + kx ,3 + ky,116,116);
+
                         kx += 120;
                     }
                     ky += 120;
@@ -410,7 +431,7 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
                             g.setFont(font);
                             g.drawString(q, 35+kx, 55 +ky);
                         }
-                        //g.fillRect(3 + kx ,3 + ky,83,83);
+
                         kx += 85;
                     }
                     ky += 85;
@@ -443,7 +464,7 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
                             g.setFont(font);
                             g.drawString(q, 22+kx, 40 +ky);
                         }
-                        //g.fillRect(3 + kx ,3 + ky,57,57);
+
                         kx += 60;
                     }
                     ky += 60;

@@ -6,14 +6,29 @@ public class Poprawnosc extends Gra{
      * 11 - woda
      * 12 - ląd
      */
+
+    /**
+     * Tablica dwuwymiarowa reprezentująca poprawny układ w danym pliku
+     */
     private int[][] poprawnaPlansza;
 
+    /**
+     * Zmienna przechowująca ilość błędów
+     */
     private int bledy;
 
+    /**
+     * Metoda zwracająca ilość błedów
+     * @return liczbe błędów
+     */
     public int getBledy(){
         return bledy;
     }
 
+    /**
+     * Metoda ładująca poprawne ułożenie planszy
+     * @param nrPlanszy numer planszy
+     */
     public void zaladujPlansze(int nrPlanszy){
         if(nrPlanszy == 0){
             int[][] poprawna = {{11, 11, 11, 11, 11},
@@ -78,6 +93,13 @@ public class Poprawnosc extends Gra{
             this.poprawnaPlansza = poprawna;
         }
     }
+
+    /**
+     * Metoda zwracająca czy plansza została rozwiązana poprawnie
+     * @param planszaUzytkownika przechowujący rozwiązanie użytkownika
+     * @param poziomTrudnosci określający poziom trudności
+     * @return true-poprawnie albo false-nie poprawnie
+     */
     public boolean sprawdzPoprawnosc(int[][] planszaUzytkownika, int poziomTrudnosci) {
         bledy = 0;
         if (poziomTrudnosci == 1){
@@ -115,6 +137,11 @@ public class Poprawnosc extends Gra{
         }
     }
 
+    /**
+     * Metoda podpowiadająca użytkownikowu gdy ten tego zarząda
+     * @param planszaUzytkownika przechowujący plansze użytkownika
+     * @param poziomTrudnosci przechowujący aktualny poziom trudności
+     */
     public void solwer(int[][] planszaUzytkownika, int poziomTrudnosci){
         int a;
         if (poziomTrudnosci == 1){
@@ -136,6 +163,10 @@ public class Poprawnosc extends Gra{
             }
         }
     }
+    /**
+     * Metoda główna realizująca program
+     * @param args parametru programu
+     */
     public static void main(String[] args){
         Gra gra = new Gra();
         gra.losujUklad(2);
