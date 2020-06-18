@@ -132,6 +132,7 @@ public class OdczytIZapis {
                         ukladPlanszy[i][x] = Integer.valueOf(linia[x]);
                         System.out.println(ukladPlanszy[i][x]);
                     }
+                    line = br.readLine();
                 }
             }
         } catch (FileNotFoundException e) {
