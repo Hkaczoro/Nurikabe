@@ -28,6 +28,12 @@ public class OdczytIZapis {
      */
     private int[][] ukladPlanszy;
 
+    private int proba;
+
+    public int getProba() {
+        return proba;
+    }
+
     /**
      * Metoda do zwracania poziomu trudności
      * @return 1, 2, 3 - poziom trudności (1 - łatwy, 2 - średni, 3 - trudny)
@@ -66,7 +72,7 @@ public class OdczytIZapis {
      * @param poziomTrudnosci poziom trudności planszy
      * @param numerPlanszy numer danej planszy
      */
-    public void write(int[][] uklad, int poziomTrudnosci, int numerPlanszy){
+    public void write(int[][] uklad, int poziomTrudnosci, int numerPlanszy, int proba){
         int a = 0;
         if (poziomTrudnosci == 1){
             a = 5;
@@ -88,7 +94,9 @@ public class OdczytIZapis {
         builder.append(";");
         builder.append(numerPlanszy);
         builder.append(";");
-        for(int i = 0; i < a - 2; i++){
+        builder.append(proba);
+        builder.append(";");
+        for(int i = 0; i < a - 3; i++){
             builder.append(0);
             builder.append(";");
         }
@@ -119,6 +127,7 @@ public class OdczytIZapis {
                 String[] linia = line.split(";");
                 this.poziomTrudnosci = Integer.valueOf(linia[0]);
                 this.numerPlanszy = Integer.valueOf(linia[1]);
+                this.proba = Integer.valueOf(linia[2]);
 
 
                 int a = 0;

@@ -197,14 +197,12 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
             repaint();
         }
         if(source == zapisz){
-            proba = 0;
             OdczytIZapis z = new OdczytIZapis();
             String nazwa = zapiszText.getText() + ".csv";
             z.setNazwaZapisywanego(nazwa);
-            z.write(uklad, gra.getPoziomTrudnosci(), gra.getNrPlanszy());
+            z.write(uklad, gra.getPoziomTrudnosci(), gra.getNrPlanszy(),proba);
         }
         if(source == wczytaj){
-            proba = 0;
             OdczytIZapis o = new OdczytIZapis();
             String nazwa = wczytajText.getText();
             try {
@@ -216,6 +214,7 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
 
             gra.setPoziomTrudnosci(o.getPoziomTrudnosci());
             gra.setNrPlanszy(o.getNumerPlanszy());
+            proba = o.getProba();
             if(o.getPoziomTrudnosci() == 1){
                 latwy.setSelected(true);
             }
@@ -337,7 +336,7 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
             }
             System.out.println(x + ", " + y);
         }
-        
+
         repaint();
     }
 
