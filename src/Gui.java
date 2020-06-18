@@ -337,8 +337,7 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
             }
             System.out.println(x + ", " + y);
         }
-
-        System.out.println("MousePressed");
+        
         repaint();
     }
 
