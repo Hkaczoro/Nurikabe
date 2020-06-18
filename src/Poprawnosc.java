@@ -164,7 +164,7 @@ public class Poprawnosc extends Gra{
         }
     }
     /**
-     * Metoda główna realizująca program
+     * Metoda główna realizująca program (testy poprawnosci metod)
      * @param args parametru programu
      */
     public static void main(String[] args){
