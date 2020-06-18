@@ -162,7 +162,7 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
                 JOptionPane.showMessageDialog(frame, "Udało ci się!");
             }
             else {
-                JOptionPane.showMessageDialog(frame, "Nie udało ci się.");
+                JOptionPane.showMessageDialog(frame, "Nie udało ci się.\nLiczba błędów: " + poprawnosc.getBledy());
             }
 
         }
@@ -186,8 +186,10 @@ public class Gui extends JFrame implements ActionListener, MouseListener, MouseM
             try {
                 o.czytaj(nazwa+".csv");
             } catch (FileNotFoundException e) {
+                JOptionPane.showMessageDialog(frame, "Nie znaleziono pliku");
                 e.printStackTrace();
             }
+
             gra.setPoziomTrudnosci(o.getPoziomTrudnosci());
             gra.setNrPlanszy(o.getNumerPlanszy());
             if(o.getPoziomTrudnosci() == 1){

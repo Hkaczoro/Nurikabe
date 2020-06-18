@@ -7,50 +7,65 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
+/**
+ * Klasa z metodami do odczytu i zapisu pliku z układem planszy
+ */
 public class OdczytIZapis {
-
+    /**
+     * Pole z nazwą pliku, który będzie zapisany przez użytkownika
+     */
     private String nazwaZapisywanego;
-
-    public String getNazwaCzytanego() {
-        return nazwaCzytanego;
-    }
-
-    public void setNazwaCzytanego(String nazwaCzytanego) {
-        this.nazwaCzytanego = nazwaCzytanego;
-    }
-
-    private String nazwaCzytanego;
-
+    /**
+     * Poziom Trudnosci planszy zapisywanej lub odczytywanej z pliku
+     */
     private int poziomTrudnosci;
+    /**
+     * Pole z numere planszy
+     */
+    private int numerPlanszy;
+    /**
+     * Tablica dwuwymiarowa reprezentująca układ w danym pliku
+     */
+    private int[][] ukladPlanszy;
 
+    /**
+     * Metoda do zwracania poziomu trudności
+     * @return 1, 2, 3 - poziom trudności (1 - łatwy, 2 - średni, 3 - trudny)
+     */
     public int getPoziomTrudnosci() {
         return poziomTrudnosci;
     }
 
-    public void setPoziomTrudnosci(int poziomTrudności) {
-        this.poziomTrudnosci = poziomTrudności;
-    }
-
+    /**
+     * Metoda do zwracania numeru planszy
+     * @return liczbę reprezentującą dany układ planszy
+     */
     public int getNumerPlanszy() {
         return numerPlanszy;
     }
 
-    public void setNumerPlanszy(int numerPlanszy) {
-        this.numerPlanszy = numerPlanszy;
-    }
-
-    private int numerPlanszy;
-
-    private int[][] ukladPlanszy;
-
+    /**
+     * Meotda do zwracania tablicy dwuwymiarowej (rozkład planszy)
+     * @return
+     */
     public int[][] getUkladPlanszy() {
         return ukladPlanszy;
     }
 
-    public void setUkladPlanszy(int[][] ukladPlanszy) {
-        this.ukladPlanszy = ukladPlanszy;
+    /**
+     * Metoda do ustawiania nazwy pliku do zapisania podaną przez użytkownika
+     * @param nazwaZapisywanego nazwa pliku podanan przez użytkownika
+     */
+    public void setNazwaZapisywanego(String nazwaZapisywanego) {
+        this.nazwaZapisywanego = nazwaZapisywanego;
     }
 
+    /**
+     * Metoda do zapisywania tablicy(planszy) do pliku typu csv
+     * @param uklad tablica dwuwymiarowa reprezentująca planszę
+     * @param poziomTrudnosci poziom trudności planszy
+     * @param numerPlanszy numer danej planszy
+     */
     public void write(int[][] uklad, int poziomTrudnosci, int numerPlanszy){
         int a = 0;
         if (poziomTrudnosci == 1){
@@ -90,17 +105,12 @@ public class OdczytIZapis {
 
     }
 
-    public String getNazwaZapisywanego() {
-        return nazwaZapisywanego;
-    }
-
-    public void setNazwaZapisywanego(String nazwaZapisywanego) {
-        this.nazwaZapisywanego = nazwaZapisywanego;
-    }
-
+    /**
+     * Metoda do wczytywania planszy z pliku podanego przez użytkownika
+     * @param nazwaCzytanego ścieżka do pliku do wczytania
+     * @throws FileNotFoundException niepoprawna ścieżka do pliku
+     */
     public void czytaj(String nazwaCzytanego) throws FileNotFoundException {
-        //Path pathToFile = Paths.get(nazwaCzytanego);
-        //Scanner sc = new Scanner(new File(nazwaCzytanego));
 
         BufferedReader br = new BufferedReader(new FileReader(nazwaCzytanego));
         try{

@@ -8,6 +8,12 @@ public class Poprawnosc extends Gra{
      */
     private int[][] poprawnaPlansza;
 
+    private int bledy;
+
+    public int getBledy(){
+        return bledy;
+    }
+
     public void zaladujPlansze(int nrPlanszy){
         if(nrPlanszy == 0){
             int[][] poprawna = {{11, 11, 11, 11, 11},
@@ -73,11 +79,12 @@ public class Poprawnosc extends Gra{
         }
     }
     public boolean sprawdzPoprawnosc(int[][] planszaUzytkownika, int poziomTrudnosci) {
+        bledy = 0;
         if (poziomTrudnosci == 1){
             for (int i = 0; i < 5; i++){
                 for (int x = 0; x < 5; x++){
                     if (poprawnaPlansza[i][x] != planszaUzytkownika[i][x]){
-                        return false;
+                        bledy++;
                     }
                 }
             }
@@ -86,7 +93,7 @@ public class Poprawnosc extends Gra{
             for (int i = 0; i < 7; i++){
                 for (int x = 0; x < 7; x++){
                     if (poprawnaPlansza[i][x] != planszaUzytkownika[i][x]){
-                        return false;
+                        bledy++;
                     }
                 }
             }
@@ -95,12 +102,17 @@ public class Poprawnosc extends Gra{
             for (int i = 0; i < 10; i++){
                 for (int x = 0; x < 10; x++){
                     if (poprawnaPlansza[i][x] != planszaUzytkownika[i][x]){
-                        return false;
+                        bledy++;
                     }
                 }
             }
         }
-        return true;
+        if(bledy == 0){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public void solwer(int[][] planszaUzytkownika, int poziomTrudnosci){
